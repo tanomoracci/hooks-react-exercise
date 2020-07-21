@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+function Counter() {
+  // Declares a new state variable, which we will call "count"
+  // Declares a setCount function that allows you to modify the count value
+  const[count, setCount] = useState(0);
+
+  function HandleChange(e){
+    setCount(e.target.value);
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>The counter is at : {count} </p>
+      <br></br>
+      <label>
+      Set start value of the counter 
+    
+      <input type="number" onChange={HandleChange}/>
+      
+      </label>
+      <br></br>
+      <br></br>
+      <button onClick={() => setCount(count + 1)}>>
+        +1
+      </button>
+      <button onClick={() => setCount(count - 1)}>>
+        -1
+      </button>
     </div>
   );
 }
 
-export default App;
+export default Counter;
